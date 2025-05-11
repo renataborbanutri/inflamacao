@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avaliação de Inflamação</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffaf8;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #b03574;
+      font-weight: 700;
+    }
+    p {
+      font-size: 16px;
+    }
+    .symptom {
+      margin: 8px 0;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+    button {
+      background-color: #b03574;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      width: 100%;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #902d5c;
+    }
+    .result {
+      margin-top: 25px;
+      background-color: #fff0f4;
+      border-left: 5px solid #b03574;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .whatsapp-share {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .whatsapp-share a {
+      background-color: #25D366;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .whatsapp-share a:hover {
+      background-color: #1ebe5d;
+    }
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .links a {
+      color: #b03574;
+      font-weight: 500;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Autoavaliação da Inflamação</h1>
+    <p>Marque os sintomas que você sente com frequência:</p>
+
+    <!-- Sintomas -->
+    <div class="symptom"><input type="checkbox" value="Intestino" class="sintoma"> Barriga inchada ou gases</div>
+    <div class="symptom"><input type="checkbox" value="Intestino" class="sintoma"> Constipação ou intestino solto</div>
+    <div class="symptom"><input type="checkbox" value="Pele" class="sintoma"> Acne, rosácea ou pele irritada</div>
+    <div class="symptom"><input type="checkbox" value="Hormonal" class="sintoma"> TPM intensa ou ciclo irregular</div>
+    <div class="symptom"><input type="checkbox" value="Articulações" class="sintoma"> Dor nas articulações</div>
+    <div class="symptom"><input type="checkbox" value="Cérebro" class="sintoma"> Cansaço excessivo ou névoa mental</div>
+    <div class="symptom"><input type="checkbox" value="Fígado" class="sintoma"> Enjoo com alimentos gordurosos</div>
+    <div class="symptom"><input type="checkbox" value="Sono" class="sintoma"> Dificuldade para dormir ou sono não reparador</div>
+    <div class="symptom"><input type="checkbox" value="Metabolismo" class="sintoma"> Dificuldade em perder peso</div>
+    <div class="symptom"><input type="checkbox" value="Inflamação hormonal" class="sintoma"> Gordura na região abdominal</div>
+    <div class="symptom"><input type="checkbox" value="Rins" class="sintoma"> Acorda muito para fazer xixi</div>
+    <div class="symptom"><input type="checkbox" value="Microbiota" class="sintoma"> Candidíase</div>
+    <div class="symptom"><input type="checkbox" value="Urinário" class="sintoma"> Infecção urinária</div>
+    <div class="symptom"><input type="checkbox" value="Neurológico" class="sintoma"> Dores de cabeça</div>
+    <div class="symptom"><input type="checkbox" value="Muscular/Imune" class="sintoma"> Dor no corpo</div>
+    <div class="symptom"><input type="checkbox" value="Imunológico" class="sintoma"> Alergias</div>
+    <div class="symptom"><input type="checkbox" value="Hormonal" class="sintoma"> Ressecamento vaginal</div>
+    <div class="symptom"><input type="checkbox" value="Hormonal" class="sintoma"> Baixa libido</div>
+    <div class="symptom"><input type="checkbox" value="Digestivo" class="sintoma"> Língua esbranquiçada</div>
+    <div class="symptom"><input type="checkbox" value="Zinco e Ferro" class="sintoma"> Unha quebradiça</div>
+    <div class="symptom"><input type="checkbox" value="Tireoide" class="sintoma"> Queda de cabelo</div>
+
+    <button onclick="avaliarInflamacao()">Avaliar</button>
+
+    <div class="result" id="resultado"></div>
+    <div class="whatsapp-share" id="whatsapp-share"></div>
+    <div class="links" id="site-link" style="display: none;">
+      <a href="https://maismaravilhosa.com/" target="_blank">🌸 Conheça o +Maravilhosa</a>
+    </div>
+  </div>
+
+  <script>
+    function avaliarInflamacao() {
+      const sintomasMarcados = document.querySelectorAll('.sintoma:checked');
+      const numSintomas = sintomasMarcados.length;
+
+      if (numSintomas === 0) {
+        document.getElementById('resultado').innerHTML = "<strong>Marque pelo menos um sintoma para avaliar.</strong>";
+        document.getElementById('whatsapp-share').innerHTML = "";
+        document.getElementById('site-link').style.display = "none";
+        return;
+      }
+
+      let nivel = "", mensagem = "";
+      if (numSintomas <= 2) {
+        nivel = "Leve 💛";
+        mensagem = "Seu corpo está mostrando sinais leves. A prevenção é o melhor caminho!";
+      } else if (numSintomas <= 4) {
+        nivel = "Moderada 🟠";
+        mensagem = "A inflamação está se espalhando. É hora de cuidar de você com mais atenção.";
+      } else {
+        nivel = "Alta 🔴";
+        mensagem = "Sinais de inflamação sistêmica! Vamos aliviar essa sobrecarga e restaurar seu equilíbrio.";
+      }
+
+      const sistemas = [];
+      const sintomasTexto = [];
+
+      sintomasMarcados.forEach(s => {
+        sistemas.push(s.value);
+        sintomasTexto.push(s.parentElement.innerText.trim());
+      });
+
+      const unicosSistemas = [...new Set(sistemas)].join(', ');
+      const listaSintomas = sintomasTexto.join(', ');
+
+      document.getElementById('resultado').innerHTML = `
+        <h3>Resultado:</h3>
+        <p><strong>Nível de inflamação:</strong> ${nivel}</p>
+        <p>${mensagem}</p>
+        <p><strong>Possíveis órgãos ou sistemas afetados:</strong> ${unicosSistemas}</p>
+        <p><strong>Sintomas identificados:</strong> ${listaSintomas}</p>
+        <p><strong>Me chama para entender como equilibrar tudo isso pela alimentação!</strong></p>
+      `;
+
+      const textoWhatsapp = 
+        `Fiz a autoavaliação da inflamação e o resultado foi: ${nivel}.\n` +
+        `Órgãos/sistemas afetados: ${unicosSistemas}.\n` +
+        `Sintomas que marquei: ${listaSintomas}.\n\n` +
+        `Quero ajuda para equilibrar meu corpo com alimentação!`;
+
+      const link = `https://wa.me/16153304647?text=${encodeURIComponent(textoWhatsapp)}`;
+
+      document.getElementById('whatsapp-share').innerHTML = 
+        `<a href="${link}" target="_blank">💬 Falar no WhatsApp agora</a>`;
+
+      document.getElementById('site-link').style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

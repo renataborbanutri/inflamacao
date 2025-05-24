@@ -63,9 +63,27 @@
       padding: 20px;
       border-radius: 8px;
     }
+    .promo-text {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .promo-text a.button {
+      display: inline-block;
+      background-color: #b03574;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .promo-text a.button:hover {
+      background-color: #902d5c;
+    }
     .whatsapp-share {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 15px;
     }
     .whatsapp-share a {
       background-color: #25D366;
@@ -75,18 +93,10 @@
       text-decoration: none;
       font-weight: 500;
       display: inline-block;
+      font-size: 16px;
     }
     .whatsapp-share a:hover {
       background-color: #1ebe5d;
-    }
-    .links {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .links a {
-      color: #b03574;
-      font-weight: 500;
-      text-decoration: none;
     }
   </style>
 </head>
@@ -125,9 +135,15 @@
     <button onclick="avaliarInflamacao()">Avaliar</button>
 
     <div class="result" id="resultado"></div>
-    <div class="whatsapp-share" id="whatsapp-share"></div>
-    <div class="links" id="site-link" style="display: none;">
-      <a href="https://maismaravilhosa.com/" target="_blank">🌸 Conheça o +Maravilhosa</a>
+
+    <div class="promo-text" id="promo-section" style="display: none;">
+      <p style="font-size: 20px; font-weight: 600; color: #b03574;">
+        🌸 Um corpo inflamado cansa, dói e trava sua vida. Liberte-se com o <strong>+Maravilhosa!</strong> 🌸
+      </p>
+      <a href="https://maismaravilhosa.com/" target="_blank" class="button">
+        🌸 Clique aqui e conheça o +Maravilhosa agora!
+      </a>
+      <div class="whatsapp-share" id="whatsapp-share"></div>
     </div>
   </div>
 
@@ -138,8 +154,7 @@
 
       if (numSintomas === 0) {
         document.getElementById('resultado').innerHTML = "<strong>Marque pelo menos um sintoma para avaliar.</strong>";
-        document.getElementById('whatsapp-share').innerHTML = "";
-        document.getElementById('site-link').style.display = "none";
+        document.getElementById('promo-section').style.display = "none";
         return;
       }
 
@@ -175,7 +190,7 @@
         <p><strong>Me chama para entender como equilibrar tudo isso pela alimentação!</strong></p>
       `;
 
-      const textoWhatsapp = 
+      const textoWhatsapp =
         `Fiz a autoavaliação da inflamação e o resultado foi: ${nivel}.\n` +
         `Órgãos/sistemas afetados: ${unicosSistemas}.\n` +
         `Sintomas que marquei: ${listaSintomas}.\n\n` +
@@ -183,10 +198,10 @@
 
       const link = `https://wa.me/16153304647?text=${encodeURIComponent(textoWhatsapp)}`;
 
-      document.getElementById('whatsapp-share').innerHTML = 
+      document.getElementById('whatsapp-share').innerHTML =
         `<a href="${link}" target="_blank">💬 Falar no WhatsApp agora</a>`;
 
-      document.getElementById('site-link').style.display = "block";
+      document.getElementById('promo-section').style.display = "block";
     }
   </script>
 

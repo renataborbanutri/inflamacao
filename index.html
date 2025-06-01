@@ -137,12 +137,23 @@
     <div class="result" id="resultado"></div>
 
     <div class="promo-text" id="promo-section" style="display: none;">
-      <p style="font-size: 20px; font-weight: 600; color: #b03574;">
-        🌸 Um corpo inflamado cansa, dói e trava sua vida. Liberte-se com o <strong>+Maravilhosa!</strong> 🌸
+
+     <p style="font-size: 20px; font-weight: 600; color: #b03574;">
+        🌸 Um corpo inflamado cansa, dói e trava sua vida. Liberte-se 🌸
+      </p>
+     <!--
+     <a href="https://maismaravilhosa.com/" target="_blank" class="button">
+        🌸 Clique aqui e conheça o +Maravilhosa agora!
+      </a>
+      -->
+     <!--
+     <p style="font-size: 20px; font-weight: 600; color: #b03574;">
+        🌸 Um corpo inflamado cansa, dói e trava sua vida. Liberte-se!!! com o <strong>+Maravilhosa!</strong> 🌸
       </p>
       <a href="https://maismaravilhosa.com/" target="_blank" class="button">
         🌸 Clique aqui e conheça o +Maravilhosa agora!
       </a>
+      -->
       <div class="whatsapp-share" id="whatsapp-share"></div>
     </div>
   </div>
@@ -199,7 +210,7 @@
       const link = `https://wa.me/16153304647?text=${encodeURIComponent(textoWhatsapp)}`;
 
       document.getElementById('whatsapp-share').innerHTML =
-        `<a href="${link}" target="_blank">💬 Falar no WhatsApp agora</a>`;
+        `<a href="${link}" target="_blank">💬 Clique aqui e me envie o seu resultado</a>`;
 
       document.getElementById('promo-section').style.display = "block";
     }
